@@ -1,0 +1,190 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    	<title>Митинг рум</title>
+	    <meta charset="UTF-8">
+	    <meta name="viewport" content="width=device-width, initial-scale=1">
+	    <meta name="keywords" content="" />
+	    <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all">
+	    <link href="css/bootstrap-theme.css" rel="stylesheet" type="text/css" media="all">
+	    <link href="css/style.css" rel="stylesheet" type="text/css" media="all"><!-- 
+	    <link href="css/fontawesome-all.min.css" rel="stylesheet" type="text/css" media="all"> -->
+    </head>
+    <body>
+    <div id="root">
+		<div class="navbar navbar-inverse navbar-static-top">
+	    	<div class="container">
+	        	<div class="navbar-header">
+	            	<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navTog">
+	                	<span class="sr-only">Меню</span>
+	                	<span class="icon-bar"></span>
+	                	<span class="icon-bar"></span>
+	                	<span class="icon-bar"></span>
+	            	</button>
+	            	<a class="navbar-brand logo"  style="color:#efefef;" href="https://alif.tj"><img src="img/alif_logo_white.png" style="height:100%;width:auto"></a>
+	        	</div>
+	        	<div class="collapse navbar-collapse" id="navTog">
+	            	<ul class="nav navbar-nav">
+		                <li id="all">
+		                  	<a href="#all" class="active" @click="cards('all')"><i class="glyphicon glyphicon-th"></i>&nbsp; Все </a>
+		              	</li>
+	            	    <li id="green">
+                            <a href="#green" @click="cards('green')"><i class="glyphicon glyphicon-ok"></i>&nbsp; Свободные </a>
+                        </li>
+                        <li id="red">
+                            <a href="#red" @click="cards('red')"><i class="glyphicon glyphicon-remove"></i>&nbsp; Занятые </a>
+                        </li>
+                        <li id="orange">
+                            <a href="#orange" @click="cards('orange')"><i class="glyphicon glyphicon-time"></i>&nbsp; Ожидание </a>
+                        </li>
+                    </ul>
+	        	</div>
+	    	</div>
+		</div>
+
+        <div class="container"><img src="img/MeetingRoom.png" alt="Meeting Room" class="banner">
+        </div>
+	    <div class="container">
+	        <div class="row masonry" data-columns>
+		        <div class="item">
+		        	<div class="thumbnail" id="item0">
+			        	<h4>{{ title[0] }}<span class="status"></span></h4>
+			        	<div class="caption"></div>
+			        	<div class="date"></div>
+			        	<div class="footer">
+							<button
+						 	data-toggle="modal" 
+						 	data-target="#modal" 
+						 	type="button" 
+						 	@click="openModal('modal0')">Бронировать</button>
+			        	</div>
+		        	</div>
+		        </div>
+                <div class="item">
+                    <div class="thumbnail" id="item1">
+                        <h4>{{ title[1] }}<span class="status"></span></h4>
+                        <div class="caption"></div>
+                        <div class="date"></div>
+                        <div class="footer">
+                            <button
+                            data-toggle="modal" 
+                            data-target="#modal" 
+                            type="button" 
+                            @click="openModal('modal1')">Бронировать</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="thumbnail" id="item2">
+                        <h4>{{ title[2] }}<span class="status"></span></h4>
+                        <div class="caption"></div>
+                        <div class="date"></div>
+                        <div class="footer">
+                            <button
+                            data-toggle="modal" 
+                            data-target="#modal" 
+                            type="button" 
+                            @click="openModal('modal2')">Бронировать</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="thumbnail" id="item3">
+                        <h4>{{ title[3] }}<span class="status"></span></h4>
+                        <div class="caption"></div>
+                        <div class="date"></div>
+                        <div class="footer">
+                            <button
+                            data-toggle="modal" 
+                            data-target="#modal" 
+                            type="button" 
+                            @click="openModal('modal3')">Бронировать</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="thumbnail" id="item4">
+                        <h4>{{ title[4] }}<span class="status"></span></h4>
+                        <div class="caption"></div>
+                        <div class="date"></div>
+                        <div class="footer">
+                            <button
+                            data-toggle="modal" 
+                            data-target="#modal" 
+                            type="button" 
+                            @click="openModal('modal4')">Бронировать</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="thumbnail" id="item5">
+                        <h4>{{ title[5] }}<span class="status"></span></h4>
+                        <div class="caption"></div>
+                        <div class="date"></div>
+                        <div class="footer">
+                            <button
+                            data-toggle="modal" 
+                            data-target="#modal" 
+                            type="button" 
+                            @click="openModal('modal5')">Бронировать</button>
+                        </div>
+                    </div>
+                </div>
+
+	        </div>
+	    </div>
+
+                        
+        <div class="modal fade" id="modal">
+            <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button class="close" type="button" data-dismiss="modal">&times;</button>
+                    <h4>Бронирование</h4>
+                </div>
+                <form name="formDate" align="center" autocomplete="true">
+                     <div class="modal-body">
+                        <div id="err" style="padding:7px;" class="alert alert-danger">
+                            Данные неверно!
+                        </div>
+                        <center>
+                            <input 
+                                type="datetime-local" name="startTime" id="startTime" data-toggle="tooltip" data-placement="top"title="Начальная время"data-trigger="hover">
+                            <input 
+                                type="datetime-local" name="outTime" id="outTime" data-toggle="tooltip" data-placement="top" title="Конечная время" data-trigger="hover">
+                            <textarea
+                        		v-model="caption" placeholder="* Короткое описание..." @keyUp="validDate" max-length="60" class="caption" name="caption" data-toggle="tooltip" data-placement="top" title="Короткое описание..." data-trigger="hover">		
+                            </textarea>
+                        </center>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" id="closeModal" data-dismiss="modal">Отмена</button>
+                        <button type="button" id="set" class="btn btn-primary" @click="localSet()" data-dismiss="modal" disabled="disabled">Бронировать</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <br>
+    <div class="content-fluid" id="footer">Designed by M. Shahriyor - 2019
+        <a style="position:absolute;opacity:0.7;text-decoration:none; right: 15px;cursor:pointer"onclick="localStorage.clear();location.reload()" data-toggle="tooltip" data-placement="top" title="Очистка база данных" data-trigger="hover">
+            <i class="glyphicon glyphicon-repeat"></i>
+        </a>
+    </div>
+</div> <!-- Root --> 
+        <script src="js/jquery-2.2.3.min.js"></script>
+        <script src="js/bootstrap.js"></script>
+        <script src="js/vue.js"></script>
+        <script src="js/VueMain.js"></script>
+        <script src="js/salvattore.min.js"></script>
+        <script>
+            $(function(){
+            	$("#err").fadeOut(0);
+                $('[data-toggle="tooltip"]').tooltip();
+                $('[data-toggle="popover"]').popover();
+                $('.warning button,.danger button').attr('disabled','disabled');
+                
+            });
+        </script>
+    </body>
+</html>
